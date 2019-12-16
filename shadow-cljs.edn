@@ -5,18 +5,19 @@
  :dependencies
  [[binaryage/devtools "0.9.11"]
   [cider/cider-nrepl "0.22.4"]
-  [reagent "0.9.0-rc3"]
   [markdown-clj "1.10.0"]
-  [re-frame "0.10.7"]]
+  [reagent "0.9.0-rc3"]]
 
- :nrepl {:port 3333}
+ :nrepl
+ {:port 3333}
 
  :builds
  {:app {:target :browser
-        :build-hooks
-        [(app.hooks/compile-posts)]
         :output-dir "public/js"
         :asset-path "/js"
-        :modules {:app {:init-fn app.core/init}}
-        :devtools {:http-root "public"
+        :modules
+        {:main
+         {:entries [app.core]}}
+        :devtools {:after-load app.core/start
+                   :http-root "public"
                    :http-port 3000}}}}
