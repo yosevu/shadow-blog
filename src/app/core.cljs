@@ -2,7 +2,8 @@
   (:require [app.resource :as rc]
             [bidi.bidi :as bidi]
             [pushy.core :as pushy]
-            [reagent.core :as r]))
+            [reagent.core :as r]
+            ["highlight.js" :as hljs]))
 
 ;; State
 
@@ -39,6 +40,7 @@
   [:div
    [:div
     [:a {:href (bidi/path-for app-routes :index)} "index"]
+    ;; (.log js/console (.highlight hljs "clj" (:html ((keyword post-id) (:posts @state))) true))
     [:article {:dangerouslySetInnerHTML {:__html (:html ((keyword post-id) (:posts @state)))}}]]])
 
 (defn page [page-id]
@@ -67,13 +69,16 @@
 (defn app []
   [:div (pages current-page)])
 
+
+
 (def history
   (pushy/pushy set-page! (partial bidi/match-route app-routes)))
+
 
 ;; Start
 
 (defn ^:export start! []
   (pushy/start! history)
-  ;; (js/alert @state)
   (r/render [app]
-   (.getElementById js/document "app")))
+            (.getElementById js/document "app"))
+  (.info js/console "Rendered app."))
