@@ -6,7 +6,7 @@
 
 ;; State
 
-(def state (r/atom { :posts (rc/get-posts "src/posts") }))
+(def state (r/atom {:posts (rc/get-posts "src/posts")}))
 
 ;; Routes
 
@@ -22,15 +22,15 @@
 
 (defn index []
   [:div
-   [:h2 "index"]
+   [:h2 "Index"]
    (for [post (:posts @state)]
-     [:div {:key (:slug (:metadata post))}
+     [:div {:key (first (:id (:metadata (last post))))}
       [:a {:href (bidi/path-for
                   app-routes
                   :post
                   :post-id
-                  (first (:slug (:metadata post))))}
-       (first (:slug (:metadata post)))]])])
+                  (first (:id (:metadata (last post)))))}
+      (first (:title (:metadata (last post))))]])])
 
 ;; (defn index []
 ;;   [:div [:h2 "/"]
@@ -45,8 +45,7 @@
   [:div
    [:div
     [:a {:href (bidi/path-for app-routes :index)} "index"]
-    [:h2 post-id]
-    [:article "content"]]])
+    [:article {:dangerouslySetInnerHTML {:__html (:html ((keyword post-id) (:posts @state)))}}]]])
 
 ;; Routing
 
@@ -60,15 +59,17 @@
 (defn set-page! [match]
   (swap! state assoc :current-page match))
 
+(defn app []
+  ;; [:div "hi"])
+  [:div (pages current-page)])
+
 (def history
   (pushy/pushy set-page! (partial bidi/match-route app-routes)))
-
-(defn app []
-  [:div (pages current-page)])
 
 ;; Start
 
 (defn ^:export start! []
   (pushy/start! history)
+  ;; (js/alert @state)
   (r/render [app]
    (.getElementById js/document "app")))

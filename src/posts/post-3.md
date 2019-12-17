@@ -1,5 +1,5 @@
 title: Post 3
-slug: post-3
+id: post-3
 tags: tag1 tag2
 
 # Post 3
