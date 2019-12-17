@@ -3,8 +3,10 @@
  ["src"]
 
  :dependencies
- [[binaryage/devtools "0.9.11"]
+ [[bidi "2.1.6"]
+  [binaryage/devtools "0.9.11"]
   [cider/cider-nrepl "0.22.4"]
+  [kibu/pushy "0.3.8"]
   [markdown-clj "1.10.0"]
   [reagent "0.9.0-rc3"]]
 
@@ -18,6 +20,6 @@
         :modules
         {:main
          {:entries [app.core]}}
-        :devtools {:after-load app.core/start
+        :devtools {:after-load app.core/start!
                    :http-root "public"
                    :http-port 3000}}}}
