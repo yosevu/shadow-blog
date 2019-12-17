@@ -30,16 +30,9 @@
                   :post
                   :post-id
                   (first (:id (:metadata (last post)))))}
-      (first (:title (:metadata (last post))))]])])
-
-;; (defn index []
-;;   [:div [:h2 "/"]
-;;    ;; [:div [:a {:href (bidi/path-for app-routes :about)} "/about"]]
-;;    [:div [:a {:href (bidi/path-for app-routes :post :post-id :post-1)} "/:post-id" ]]])
-
-;; (defn about []
-;;   [:div [:h2 "/about"]
-;;    [:div [:a {:href (bidi/path-for app-routes :index)} "/"]]])
+       (first (:title (:metadata (last post))))]])
+   [:p
+    [:a {:href (bidi/path-for app-routes :page :page-id "another-page")} "another page"]]])
 
 (defn post [post-id]
   [:div
@@ -47,12 +40,18 @@
     [:a {:href (bidi/path-for app-routes :index)} "index"]
     [:article {:dangerouslySetInnerHTML {:__html (:html ((keyword post-id) (:posts @state)))}}]]])
 
+(defn page [page-id]
+  [:div
+   [:div
+    [:a {:href (bidi/path-for app-routes :index)} "index"]
+    [:div "another page"]]])
+
 ;; Routing
 
 (defn pages [path]
   (case (:handler (:current-page @state))
     :index [index]
-    ;; :about [about]
+    :page [page :another-page]
     :post [post (:post-id (:route-params (:current-page @state)))]
     [[:div "default page"]]))
 
@@ -60,7 +59,6 @@
   (swap! state assoc :current-page match))
 
 (defn app []
-  ;; [:div "hi"])
   [:div (pages current-page)])
 
 (def history
