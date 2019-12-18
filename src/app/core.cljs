@@ -69,16 +69,12 @@
 (defn app []
   [:div (pages current-page)])
 
-
-
 (def history
   (pushy/pushy set-page! (partial bidi/match-route app-routes)))
-
 
 ;; Start
 
 (defn ^:export start! []
   (pushy/start! history)
   (r/render [app]
-            (.getElementById js/document "app"))
-  (.info js/console "Rendered app."))
+            (.getElementById js/document "app")))
