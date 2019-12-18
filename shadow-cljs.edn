@@ -19,7 +19,7 @@
         :asset-path "/js"
         :modules
         {:main
-         {:entries [app.core]}}
+         {:init-fn app.core/start!}}
         :devtools {:after-load app.core/start!
                    :http-root "public"
                    :http-port 3000}}}}
