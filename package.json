@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "build": "npx tailwind build src/app/core.css -o public/css/main.css"
+    "build": "npx tailwind build src/app/core.css -o public/css/main.css",
+    "develop": "shadow-cljs watch app",
+    "release": "shadow-cljs release app"
   },
   "devDependencies": {
     "shadow-cljs": "2.8.81"
