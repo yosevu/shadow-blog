@@ -24,7 +24,6 @@
 
 (defn index []
   [:div
-   [:h2 "Index"]
    (for [post (:posts @state)]
      [:div {:key (first (:id (:metadata (last post))))}
       [:a {:href (bidi/path-for
@@ -32,22 +31,20 @@
                   :post
                   :post-id
                   (first (:id (:metadata (last post)))))}
-       (first (:title (:metadata (last post))))]])
-   [:p
-    [:a {:href (bidi/path-for app-routes :page :page-id "another-page")} "another page"]]])
+       (first (:title (:metadata (last post))))]])])
+   ;; [:p
+    ;; [:a {:href (bidi/path-for app-routes :page :page-id "another-page")} "another page"]]])
 
 (defn post [post-id]
   [:div
    [:div
-    [:a {:href (bidi/path-for app-routes :index)} "index"]
     ;; (.log js/console (.highlight hljs "clj" (:html ((keyword post-id) (:posts @state))) true))
     [:article {:dangerouslySetInnerHTML {:__html (:html ((keyword post-id) (:posts @state)))}}]]])
 
-(defn page [page-id]
-  [:div
-   [:div
-    [:a {:href (bidi/path-for app-routes :index)} "index"]
-    [:div "another page"]]])
+;; (defn page [page-id]
+;;   [:div
+;;    [:p "another page"]
+;;    [:a {:href (bidi/path-for app-routes :index)} "index"]])
 
 (defn not-found []
   [:div
@@ -59,7 +56,7 @@
   ;; (js/alert (:current-page @state))
   (case (:handler (:current-page @state))
     :index [index]
-    :page [page :another-page]
+    ;; :page [page :another-page] FIXME
     :post [post (:post-id (:route-params (:current-page @state)))]
     [not-found]))
 
@@ -67,7 +64,10 @@
   (swap! state assoc :current-page match))
 
 (defn app []
-  [:div (pages current-page)])
+  [:div
+   [:h1 [:a {:href (bidi/path-for app-routes :index)} "Yosevu's strange loop"]]
+   [:p [:code "(-> thoughts read eval print)"]]
+    (pages current-page)])
 
 (def history
   (pushy/pushy set-page! (partial bidi/match-route app-routes)))
