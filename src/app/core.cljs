@@ -23,10 +23,10 @@
 ;; Views
 
 (defn index []
-  [:div
+  [:div.mt-8
    (for [post (:posts @state)]
-     [:div {:key (first (:id (:metadata (last post))))}
-      [:a {:href (bidi/path-for
+     [:div.my-4.py-4 {:key (first (:id (:metadata (last post))))}
+      [:a.border-b.border-gray-900.hover:border-transparent {:href (bidi/path-for
                   app-routes
                   :post
                   :post-id
@@ -36,10 +36,9 @@
     ;; [:a {:href (bidi/path-for app-routes :page :page-id "another-page")} "another page"]]])
 
 (defn post [post-id]
-  [:div
-   [:div
-    ;; (.log js/console (.highlight hljs "clj" (:html ((keyword post-id) (:posts @state))) true))
-    [:article {:dangerouslySetInnerHTML {:__html (:html ((keyword post-id) (:posts @state)))}}]]])
+  [:div.mt-4.pt-4
+   ;; (.log js/console (.highlight hljs "clj" (:html ((keyword post-id) (:posts @state))) true))
+   [:article {:dangerouslySetInnerHTML {:__html (:html ((keyword post-id) (:posts @state)))}}]])
 
 ;; (defn page [page-id]
 ;;   [:div
@@ -64,9 +63,10 @@
   (swap! state assoc :current-page match))
 
 (defn app []
-  [:div
-   [:h1 [:a {:href (bidi/path-for app-routes :index)} "Yosevu's strange loop"]]
-   [:p [:code "(-> thoughts read eval print)"]]
+  [:div.container.mx-auto.max-w-2xl.m-4.p-4.text-gray-900
+   [:div
+    [:h1.text-2xl.leading-snug.underline.hover:no-underline [:a {:href (bidi/path-for app-routes :index)} "Yosevu's strange loop"]]
+    [:code.text-sm "(-> thoughts read eval print)"]]
     (pages current-page)])
 
 (def history
