@@ -1,4 +1,6 @@
-title: Post 3
+title: Welcome to Post 3
+subtitle: This post has a code snippet.
+date: 2010-02-01
 id: post-3
 tags: tag1 tag2
 
