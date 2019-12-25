@@ -14,7 +14,6 @@
 (def app-routes
   ["/" {"" :index
         ["" :post-id] :post
-        ["" :page-id] :page
         true :not-found}])
 
 (defn current-page []
@@ -35,22 +34,17 @@
       [:div
        [:time.text-sm (first (:date (:metadata (last post))))]]
       [:p (first (:subtitle (:metadata (last post))))]])])
-   ;; [:p
-    ;; [:a {:href (bidi/path-for app-routes :page :page-id "another-page")} "another page"]]])
-
-(defn post [post-id]
-  [:div.mt-4.pt-4
-   ;; (.log js/console (.highlight hljs "clj" (:html ((keyword post-id) (:posts @state))) true))
-   [:article {:dangerouslySetInnerHTML {:__html (:html ((keyword post-id) (:posts @state)))}}]])
-
-;; (defn page [page-id]
-;;   [:div
-;;    [:p "another page"]
-;;    [:a {:href (bidi/path-for app-routes :index)} "index"]])
 
 (defn not-found []
-  [:div
+  [:div.mt-12
    [:p "Not Found"]])
+
+(defn post [post-id]
+  (if (nil? ((keyword post-id) (:posts @state)))
+    (not-found)
+    [:div.mt-4.pt-4
+     ;; (.log js/console (.highlight hljs "clj" (:html ((keyword post-id) (:posts @state))) true))
+     [:article {:dangerouslySetInnerHTML {:__html (:html ((keyword post-id) (:posts @state)))}}]]))
 
 ;; Routing
 
@@ -58,7 +52,6 @@
   ;; (js/alert (:current-page @state))
   (case (:handler (:current-page @state))
     :index [index]
-    ;; :page [page :another-page] FIXME
     :post [post (:post-id (:route-params (:current-page @state)))]
     [not-found]))
 
