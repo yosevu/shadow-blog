@@ -1,0 +1,11 @@
+/* Markdown code block styles */
+
+pre {
+  font-size: 0.85rem;
+}
+
+code.hljs {
+  border-radius: 0.625rem;
+  /* Override runtime highlight.js padding */
+  padding: 1rem !important;
+}

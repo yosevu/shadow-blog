@@ -1,12 +1,18 @@
+const isProduction = process.env.NODE_ENV === 'production';
+
 module.exports = {
   plugins: [
+    require('postcss-import'),
     require('tailwindcss'),
     require('autoprefixer'),
-    process.env.NODE_ENV === 'production' && require('@fullhuman/postcss-purgecss')({
+    isProduction && require('@fullhuman/postcss-purgecss')({
       content: [
         './src/app/core.cljs',
       ],
       defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
+    }),
+    isProduction && require('cssnano')({
+      preset: 'default',
     }),
   ],
 };

@@ -1,3 +1,5 @@
+/* purgecss start ignore */
+
 /*
  * Copyright (c) 2017-present Arctic Ice Studio <development@arcticicestudio.com>
  * Copyright (c) 2017-present Sven Greb <development@svengreb.de>
@@ -307,3 +309,5 @@
 .yaml .hljs-meta {
   color: #D08770;
 }
+
+/* purgecss end ignore */

@@ -1,20 +1,3 @@
-/* purgecss start ignore */
-
-@tailwind  base;
-
-@tailwind  components;
-
-/* purgecss end ignore */
-
-
-@tailwind utilities;
-
-/* Markdown code block styles */
-
-pre {
-  font-size: 0.85rem;
-}
-
-code {
-  border-radius: 10px;
-}
+@import "./tailwind.css";
+@import "./nord.css";
+@import "./custom.css";
