@@ -7,3 +7,14 @@ tags: tag1 tag2
 # Post 2
 
 ...and this is Post 2.
+
+## Rust
+
+```rust
+fn factorial(i: u64) -> u64 {
+    match i {
+        0 => 1,
+        n => n * factorial(n-1)
+    }
+}
+```

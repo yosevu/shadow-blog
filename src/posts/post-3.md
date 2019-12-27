@@ -6,8 +6,24 @@ tags: tag1 tag2
 
 # Post 3
 
+## Clojure
+
+```clojure
+;; a typical entry point of a Clojure program
+(defn -main                   ; function name
+  [& args]                    ; parameter vector (`-main` is a variadic function)
+  (println "Hello, World!"))  ; function body
 ```
-(defn hello
-  [name]
-  (str "Hello, " name))
+
+## JavaScript
+
+```javascript
+function factorial(n) {
+    if (n === 0)
+        return 1; // 0! = 1
+
+    return n * factorial(n - 1);
+}
+
+factorial(3); // returns 6
 ```

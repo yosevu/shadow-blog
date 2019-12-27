@@ -39,12 +39,21 @@
   [:div.mt-12
    [:p "Not Found"]])
 
+(defn- highlight-block [node]
+  (if (nil? (.querySelector (r/dom-node node) "pre code"))
+    nil
+    (doseq [block (array-seq (.querySelectorAll (r/dom-node node) "pre code"))]
+      (.highlightBlock hljs block))))
+
 (defn post [post-id]
-  (if (nil? ((keyword post-id) (:posts @state)))
-    (not-found)
-    [:div.mt-4.pt-4
-     ;; (.log js/console (.highlight hljs "clj" (:html ((keyword post-id) (:posts @state))) true))
-     [:article {:dangerouslySetInnerHTML {:__html (:html ((keyword post-id) (:posts @state)))}}]]))
+  (r/create-class
+   {:component-did-mount highlight-block
+    :reagent-render
+    (fn []
+      (if (nil? ((keyword post-id) (:posts @state)))
+        (not-found)
+        [:div.mt-4.pt-4
+         [:article {:dangerouslySetInnerHTML {:__html (:html ((keyword post-id) (:posts @state)))}}]]))}))
 
 ;; Routing
 

@@ -6,4 +6,15 @@
 
 /* purgecss end ignore */
 
+
 @tailwind utilities;
+
+/* Markdown code block styles */
+
+pre {
+  font-size: 0.85rem;
+}
+
+code {
+  border-radius: 10px;
+}
