@@ -64,7 +64,6 @@
 ;; Routing
 
 (defn pages [path]
-  ;; (js/alert (:current-page @state))
   (case (:handler (:current-page @state))
     :index [index]
     :post [post (:post-id (:route-params (:current-page @state)))]
