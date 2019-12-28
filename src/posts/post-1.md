@@ -4,6 +4,4 @@ date: 2019-12-01
 id: post-1
 tags: tag1 tag2
 
-# Post 1
-
 This is Post 1!

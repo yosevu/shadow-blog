@@ -53,8 +53,13 @@
     (fn []
       (if (nil? ((keyword post-id) (:posts @state)))
         (not-found)
-        [:div.mt-4.pt-4
-         [:article {:dangerouslySetInnerHTML {:__html (:html ((keyword post-id) (:posts @state)))}}]]))}))
+        [:div.mt-12
+         [:h2.text-2xl.font-medium.mb-2
+          (first (:title (:metadata ((keyword post-id) (:posts @state)))))]
+         [:div.mb-8
+          [:time.text-sm.tracking-wide (first (:date (:metadata ((keyword post-id) (:posts @state)))))]]
+         [:article
+          {:dangerouslySetInnerHTML {:__html (:html ((keyword post-id) (:posts @state)))}}]]))}))
 
 ;; Routing
 
