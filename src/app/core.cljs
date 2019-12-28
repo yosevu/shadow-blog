@@ -24,16 +24,17 @@
 (defn index []
   [:main.mt-12
    (for [post (:posts @state)]
-     [:div.my-4.py-4 {:key (first (:id (:metadata (last post))))}
-      [:a.text-xl.font-semibold.border-b-2.border-gray-900.hover:border-transparent {:href (bidi/path-for
-                  app-routes
-                  :post
-                  :post-id
-                  (first (:id (:metadata (last post)))))}
+     [:div.my-3.py-3 {:key (first (:id (:metadata (last post))))}
+      [:a.text-lg.font-medium.border-b-2.border-gray-900.hover:border-transparent
+       {:href (bidi/path-for
+               app-routes
+               :post
+               :post-id
+               (first (:id (:metadata (last post)))))}
        (first (:title (:metadata (last post))))]
       [:div
-       [:time.text-sm (first (:date (:metadata (last post))))]]
-      [:p (first (:subtitle (:metadata (last post))))]])])
+       [:time.text-sm.tracking-wide (first (:date (:metadata (last post))))]]
+      [:p.tracking-wide (first (:subtitle (:metadata (last post))))]])])
 
 (defn not-found []
   [:div.mt-12
@@ -68,13 +69,15 @@
   (swap! state assoc :current-page match))
 
 (defn app []
-  [:div.container.mx-auto.max-w-2xl.m-4.mt-8.p-4.text-gray-900
+  [:div.container.mx-auto.max-w-2xl.m-4.p-4.mt-10.text-gray-900
    [:header
-    [:h1.text-2xl.font-semibold.leading-snug.underline.hover:no-underline [:a
-                                                             {:href (bidi/path-for app-routes :index)
-                                                              :aria-label "Yosev, strange loop"}
-                                                             "Yosevu.strange-loop"]]
-    [:code.text-sm {:aria-label "Thread thoughts, read, evaluate, print"}"(-> thoughts read eval print)"]]
+    [:h1.text-gray-900.text-xl.leading-snug.tracking-wide
+     [:a {:href (bidi/path-for app-routes :index)
+          :aria-label "Yosev, strange loop"}
+      "Yosevu.strange-loop"]]
+    [:code.text-xs.tracking-tight
+     {:aria-label "Thread thoughts, read, evaluate, print"}
+     "(-> thoughts read eval print)"]]
    (pages current-page)])
 
 (def history
