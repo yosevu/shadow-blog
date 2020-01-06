@@ -24,7 +24,7 @@
 ;; Views
 
 (defn tag-template [tag]
-  [:a.text-blue-600.text-sm.t.ml-3.border-b.border-transparent.hover:border-blue-600
+  [:a.text-blue-600.text-sm.ml-3.border-b.border-transparent.hover:border-blue-600
    {:key tag
     :href (bidi/path-for
                    app-routes
@@ -97,15 +97,19 @@
 
 (defn app []
   [:div.container.mx-auto.max-w-2xl.m-4.p-4.mt-10.text-gray-900
-   [:header
-    [:h1.text-gray-900.text-xl.leading-snug.tracking-wide
-     [:a.border-b.border-transparent.hover:border-gray-900
-      {:href (bidi/path-for app-routes :index)
-          :aria-label "Yosev, strange loop"}
-      "Yosevu.strange-loop"]]
-    [:code.text-xs.tracking-tight
-     {:aria-label "Thread thoughts, read, evaluate, print"}
-     "(-> thoughts read eval print)"]]
+   [:header.flex.justify-between
+    [:div
+     [:h1.text-gray-900.text-xl.leading-snug.tracking-wide
+      [:a.border-b.border-transparent.hover:border-gray-900
+       {:href (bidi/path-for app-routes :index)
+        :aria-label "Yosev, strange loop"}
+       "Yosevu.strange-loop"]]
+     [:code.text-xs.tracking-tight
+      {:aria-label "Thread thoughts, read, evaluate, print"}
+      "(-> thoughts read eval print)"]]
+    [:nav
+     (tag-template :notes)
+     (tag-template :projects)]]
    (pages current-page)])
 
 (def history
