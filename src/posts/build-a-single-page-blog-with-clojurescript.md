@@ -7,8 +7,6 @@ tags: clojurescript shadow-cljs
 I wanted to learn ClojureScript by building something that I would personally
 use. My personal blog seemed like a failsafe choice, so here we are.
 
-</br> 
-
 ### Exploring the Clojure Ecosystem
 
 In which:
@@ -17,8 +15,6 @@ In which:
 - I discovered shadow-cljs 🖤
 - I discovered Tailwind CSS 🖤
 
-</br> 
-
 ### Choosing the Stack
 
 In which I chose the tools I wanted to work with.
@@ -26,8 +22,6 @@ In which I chose the tools I wanted to work with.
 - shadow-cljs
 - Reagent
 - Tailwind CSS
-
-</br> 
 
 ### Markdown to Macros
 
@@ -38,7 +32,27 @@ ClojureScript
 - How to leverage Clojure macros in CojureScript
 - How to transform markdown files to HTML
 
-</br> 
+
+```clojure
+(ns app.resource
+  (:require [clojure.java.io :as io]
+            [markdown.core :refer [md-to-html-string-with-meta]]))
+
+(defn slurp-dir [path]
+  (map slurp (rest (file-seq (io/file path)))))
+
+(defn md->html [files]
+  (map md-to-html-string-with-meta files))
+
+(defn sort-by-date [posts]
+  (reverse (sort-by #(get-in (:metadata %) [:date]) posts)))
+
+(defn into-map [posts-map post]
+  (assoc posts-map (keyword (first (:id (:metadata post)))) post))
+
+(defmacro get-posts [path]
+  (reduce into-map {} (sort-by-date (md->html (slurp-dir path)))))
+```
 
 ### Style and Build Configuration
 
@@ -47,19 +61,13 @@ In which:
 - I integrated Tailwind CSS into my workflow
 - I customized development and production builds
 
-</br> 
-
 ### Client-side Routing
 
 In which I learned more about Clojure, ClojureScript, and Reagent.
 
-</br> 
-
 ### Syntax Highlighting
 
 In which I gained a deeper understanding of Reagent.
-
-</br> 
 
 ### Deployment
 

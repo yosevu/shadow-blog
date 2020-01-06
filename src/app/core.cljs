@@ -24,7 +24,7 @@
 ;; Views
 
 (defn tag-template [tag]
-  [:a.text-sm.t.ml-3.border-b.border-transparent.hover:border-gray-900
+  [:a.text-blue-600.text-sm.t.ml-3.border-b.border-transparent.hover:border-blue-600
    {:key tag
     :href (bidi/path-for
                    app-routes
@@ -77,7 +77,7 @@
          [:div.flex.mt-2.items-center
           [:time.text-sm.tracking-wide.mt-px (first (:date (:metadata ((keyword post-id) (:posts @state)))))]
           (tags ((keyword post-id) (:posts @state)))]
-         [:article.mt-6
+         [:article.markdown.mt-6
           {:dangerouslySetInnerHTML {:__html (:html ((keyword post-id) (:posts @state)))}}]]))}))
 
 (defn filter-by-tag [posts tag-id]
