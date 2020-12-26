@@ -1,9 +1,13 @@
-# [yosevu](https://yosevu.com)
+# shadow-static
+
+A minimal, single-page blog starter built with shadow-cljs, Reagent, and Tailwind CSS.
 
 ## Develop
 
-`yarn develop`
+`npm develop`
 
 ## Release
 
-[`yarn release`](https://app.netlify.com/sites/yosevu/settings/deploys)
+`npm release`
+
+See [Generating Production Code](https://shadow-cljs.github.io/docs/UsersGuide.html#release) for more information.
