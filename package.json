@@ -6,8 +6,8 @@
     "build": "export NODE_ENV=production && postcss src/css/main.css -o public/css/main.css",
     "watch:css": "postcss src/css/main.css -o public/css/main.css --watch",
     "watch:shadow": "shadow-cljs watch app",
-    "develop": "yarn run-p watch:css watch:shadow",
-    "release": "yarn build && shadow-cljs release app"
+    "develop": "npm run-p watch:css watch:shadow",
+    "release": "npm build && shadow-cljs release app"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^1.3.0",
