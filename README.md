@@ -1,9 +1,28 @@
-# [yosevu](https://yosevu.com)
+# shadow-static
+
+A minimal, single-page blog starter built with shadow-cljs, Reagent, and Tailwind CSS.
 
 ## Develop
 
-`yarn develop`
+### CLI
+
+`npm start`
+
+### [CIDER](https://cider.mx/) (Emacs)
+
+- `cider-jack-in-cljs`
+
+cider-connect-sibling-cljs option
+
+-  Select the **shadow** 
+-  Select **:app**
+
+Visit 'http://localhost:3000' in a browser? (y or n)
+
+- Enter `y`
 
 ## Release
 
-[`yarn release`](https://app.netlify.com/sites/yosevu/settings/deploys)
+`npm release`
+
+See [Generating Production Code](https://shadow-cljs.github.io/docs/UsersGuide.html#release) for more information.
