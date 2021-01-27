@@ -2,6 +2,9 @@
 
 A minimal, single-page blog starter built with shadow-cljs, Reagent, and Tailwind CSS.
 
+Before running for the first time run:
+`npm i` or `npm install`
+
 ## Develop
 
 ### CLI
