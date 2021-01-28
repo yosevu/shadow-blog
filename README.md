@@ -6,7 +6,6 @@ A minimal, single-page blog starter built with shadow-cljs, Reagent, and Tailwin
 .
 ├── README.md
 ├── netlify.toml
-├── package-lock.json
 ├── package.json
 ├── postcss.config.js
 ├── public
@@ -28,17 +27,19 @@ A minimal, single-page blog starter built with shadow-cljs, Reagent, and Tailwin
 │       ├── post-1.md
 │       ├── post-2.md
 │       └── set-up-tailwind-css-in-a-shadow-cljs-project.md
-└── tailwind.config.js
+├── tailwind.config.js
+├── yarn-error.log
+└── yarn.lock
 ```
 
 ## Develop
 
 Before running for the first time run:
-`npm i` or `npm install`
+`yarn install`
 
 ### CLI
 
-`npm start`
+`yarn start`
 
 ### [CIDER](https://cider.mx/) (Emacs)
 
@@ -55,6 +56,6 @@ Visit 'http://localhost:3000' in a browser? (y or n)
 
 ## Release
 
-`npm release`
+`yarn release`
 
 See [Generating Production Code](https://shadow-cljs.github.io/docs/UsersGuide.html#release) for more information.
