@@ -1,7 +1,10 @@
 module.exports = {
-  theme: {
-    extend: {}
-  },
-  variants: {},
-  plugins: []
+    purge: [
+        './src/**/*.cljs'
+    ],
+    theme: {
+        extend: {}
+    },
+    variants: {},
+    plugins: []
 }
