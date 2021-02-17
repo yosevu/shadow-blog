@@ -1,6 +1,5 @@
 /node_modules
-/public/css/main.css
-/public/js
+/public
 /target
 /checkouts
 /src/gen
@@ -11,6 +10,7 @@ pom.xml.asc
 *.jar
 *.log
 .shadow-cljs
+.cpcache
 .idea
 .lein-*
 .nrepl-*

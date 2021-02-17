@@ -5,31 +5,21 @@ A minimal, single-page blog starter built with shadow-cljs, Reagent, and Tailwin
 ```
 .
 ├── README.md
-├── netlify.toml
+├── deps.edn
 ├── package.json
 ├── postcss.config.js
 ├── public
-│   └── index.html
 ├── shadow-cljs.edn
 ├── src
 │   ├── app
 │   │   ├── core.cljs
-│   │   ├── resource.clj
-│   │   └── resource.cljs
-│   ├── css
-│   │   ├── custom.css
-│   │   ├── main.css
-│   │   ├── nord.css
-│   │   └── tailwind.css
-│   └── posts
-│       ├── build-a-single-page-blog-with-clojurescript.md
-│       ├── markdown-samples.md
-│       ├── post-1.md
-│       ├── post-2.md
-│       └── set-up-tailwind-css-in-a-shadow-cljs-project.md
-├── tailwind.config.js
-├── yarn-error.log
-└── yarn.lock
+│   │   └── index.clj
+│   └── css
+│       ├── custom.css
+│       ├── main.css
+│       └── tailwind.css
+└── tailwind.config.js
+
 ```
 
 ## Develop
