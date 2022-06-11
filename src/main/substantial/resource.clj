@@ -1,4 +1,4 @@
-(ns app.resource
+(ns substantial.resource
   (:require [clojure.java.io :as io]
             [markdown.core :refer [md-to-html-string-with-meta]]))
 

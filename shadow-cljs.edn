@@ -1,25 +1,18 @@
-;; shadow-cljs configuration
 {:source-paths
- ["src"]
+ ["src/dev"
+  "src/main"
+  "src/test"]
 
- :dependencies
- [[bidi "2.1.6"]
-  [binaryage/devtools "0.9.11"]
-  [cider/cider-nrepl "0.22.4"]
-  [kibu/pushy "0.3.8"]
-  [markdown-clj "1.10.0"]
-  [reagent "0.9.0-rc3"]]
+ :dependencies [[bidi "2.1.6"]
+                [binaryage/devtools "0.9.11"]
+                [cider/cider-nrepl "0.22.4"]
+                [kibu/pushy "0.3.8"]
+                [markdown-clj "1.10.0"]
+                [reagent "0.9.0-rc3"]]
 
- :nrepl
- {:port 3333}
+ :dev-http {1620 "public"}
 
- :builds
- {:app {:target :browser
-        :output-dir "public/js"
-        :asset-path "/js"
-        :modules
-        {:main
-         {:init-fn app.core/start!}}
-        :devtools {:after-load app.core/start!
-                   :http-root "public"
-                   :http-port 3000}}}}
+ :builds {:app {:target :browser
+          :output-to "public/js"
+          :modules {:main {:init-fn substantial.app.core/start!}}
+          :devtools {:after-load substantial.app.core/start!}}}}

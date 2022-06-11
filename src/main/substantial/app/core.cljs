@@ -1,5 +1,5 @@
-(ns app.core
-  (:require [app.resource :as rc]
+(ns substantial.app.core
+  (:require [substantial.resource :as rc]
             [bidi.bidi :as bidi]
             [clojure.string :refer [split]]
             [pushy.core :as pushy]
@@ -48,7 +48,7 @@
                :post
                :post-id
                (first (:id (:metadata (last post)))))}
-       (first (:title (:metadata (last post))))]
+    (first (:title (:metadata (last post))))]
       [:div.flex.items-center.mt-1
        [:time.text-sm.tracking-wide.mt-px (first (:date (:metadata (last post))))]
        (tags (last post))]
@@ -90,7 +90,7 @@
     :index [index (:posts @state)]
     :post [post (:post-id (:route-params (:current-page @state)))]
     :tag [index (filter-by-tag (:posts @state) (:tag-id (:route-params (:current-page @state))))]
-    [not-found]))
+[not-found]))
 
 (defn set-page! [match]
   (swap! state assoc :current-page match))
