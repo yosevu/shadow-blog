@@ -1,6 +1,6 @@
-# shadow-static
+# shadow-blog
 
-A minimal, single-page blog starter built with shadow-cljs, Reagent, and Tailwind CSS.
+A minimal, single-page blog starter built with shadow-cljs, styled with Tailwind CSS, and client-side rendered with Reagent.
 
 ## Develop
 
